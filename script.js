@@ -59,7 +59,25 @@ function rgbsplit(pixels){
     }
     return pixels; 
 }
+function greenSplit(pixels){
+    const levels={};
 
+    document.querySelectorAll('.rgb input').forEach((input)=>{
+        levels[input.name]=input.value;
+    });
+    for(i=0;i<pixels.data.length;i+=4){
+        red=pixels.data[i+0];
+        green=pixels.data[i+1];
+        blue=pixels.data[i+2];
+        alpha=pixels.data[i+3];
+
+        if(red>=levels.rmin && green>=levels.gmin && blue>=levels.bmin && red<=levels.rmax
+            && blue<=levels.bmax && green<=levels.gmax){
+                pixels.data[i+3]=0;
+            }
+    }
+    return pixels;
+}
 
 getVideo();
 video.addEventListener('canplay',paintToCanvas);
