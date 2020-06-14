@@ -51,6 +51,14 @@ function redEffect(pixels){
     }
     return pixels;
 }
+function rgbsplit(pixels){
+    for(let i=0;i<pixels.data.length;i+=4){
+        pixels.data[i-150]=pixels.data[i+0];
+        pixels.data[i+500]=pixels.data[i+1];
+        pixels.data[i-550]=pixels.data[i+2];
+    }
+    return pixels; 
+}
 
 
 getVideo();
